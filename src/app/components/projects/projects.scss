@@ -1,0 +1,225 @@
+.projects-wrapper {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  background: transparent;
+}
+
+.horizontal-container {
+  display: flex;
+  height: 100vh;
+  width: max-content;
+  align-items: center;
+  padding: 0 10vw; // More side padding for better start/end feel
+  gap: 5vw;
+}
+
+.three-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; 
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.project-card {
+  flex-shrink: 0;
+  width: 420px;
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  position: relative;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  &.title-card {
+    border: none;
+    background: transparent;
+    backdrop-filter: none;
+    display: flex;
+    justify-content: center;
+    h2 { 
+      font-size: clamp(2rem, 6vw, 3.5rem); 
+      line-height: 1; 
+      margin-bottom: 20px;
+    }
+    p { color: var(--text-muted); font-size: 1rem; max-width: 300px; }
+  }
+@media (max-width: 992px) {
+  .horizontal-container {
+    flex-direction: column;
+    height: auto;
+    width: 100vw;
+    padding: 0 2vw;
+    gap: 3vw;
+  }
+  .project-card {
+    width: 90vw;
+    height: auto;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .horizontal-container {
+    flex-direction: column;
+    height: auto;
+    width: 100vw;
+    padding: 0 1vw;
+    gap: 2vw;
+  }
+  .project-card {
+    width: 98vw;
+    min-width: unset;
+    height: auto;
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+  .three-canvas {
+    display: none;
+  }
+}
+
+  &:not(.title-card):hover {
+    border-color: var(--accent-blue);
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+
+    .project-preview {
+      .preview-icon {
+        transform: scale(1.2) rotate(5deg);
+        opacity: 1;
+      }
+      .glow-overlay { opacity: 0.8; }
+    }
+  }
+}
+
+/* --- The Image Replacement (Preview Box) --- */
+.project-preview {
+  width: 100%;
+  height: 60%;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a1a;
+
+  // Icons inside the preview
+  .preview-icon {
+    width: 60px;
+    height: 60px;
+    color: white;
+    opacity: 0.3;
+    z-index: 2;
+    transition: all 0.5s ease;
+  }
+
+  .glow-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+  }
+
+  // Individual card gradients
+  &.p-1 { background: linear-gradient(135deg, #1e293b, #38bdf8); }
+  &.p-2 { background: linear-gradient(135deg, #1e293b, #8b5cf6); }
+  &.p-3 { background: linear-gradient(135deg, #1e293b, #10b981); }
+  &.p-4 { background: linear-gradient(135deg, #1e293b, #f43f5e); }
+}
+
+.project-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+    margin-bottom: auto;
+  }
+
+  .link-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 22px;
+    height: 22px;
+    color: var(--accent-blue);
+    opacity: 0.5;
+    transition: 0.3s;
+    &:hover { opacity: 1; transform: scale(1.2); }
+  }
+}
+
+.tech-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  span {
+    position: relative; /* important */
+    overflow: hidden;   /* hide shine overflow */
+
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 12px;
+    white-space: normal;
+    word-break: break-word;
+    max-width: 120px;
+    text-align: center;
+
+    transition: transform 0.3s ease;
+
+    /* ✨ Shine layer */
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.5),
+        transparent
+      );
+      transition: all 0.5s ease;
+    }
+
+    /* Hover effect */
+    &:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+
+    &:hover::before {
+      left: 100%;
+    }
+  }
+}

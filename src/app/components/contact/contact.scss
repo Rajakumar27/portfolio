@@ -1,0 +1,142 @@
+@media (max-width: 992px) {
+  .contact-form {
+    padding: 20px;
+    gap: 12px;
+  }
+  .social-links .social-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-section {
+    padding-bottom: 20px;
+  }
+  .contact-form {
+    padding: 8px;
+    gap: 8px;
+  }
+  .social-links {
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .social-links .social-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+  .submit-btn {
+    font-size: 0.95rem;
+    padding: 6px 12px;
+  }
+}
+.contact-section {
+  padding-bottom: 50px;
+}
+
+/* SOCIAL ICONS */
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+
+  .social-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: var(--accent-blue);
+      border-color: var(--accent-blue);
+      transform: translateY(-5px);
+    }
+  }
+}
+
+/* FORM */
+.contact-form {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  input, textarea {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    color: white;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    
+
+    &:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      background: rgba(56, 189, 248, 0.05);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+    }
+  }
+}
+
+/* BUTTON */
+.submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px;
+  color: var(--accent-blue);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+
+  &:hover {
+    background: var(--accent-blue);
+    color: var(--bg-dark);
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+/* SUCCESS MESSAGE */
+.success-msg {
+  margin-top: 10px;
+  color: #4ade80;
+  font-size: 14px;
+  text-align: center;
+  animation: fadeInUp 0.4s ease;
+}
+.input-group textarea {
+  resize: none;         /* Prevents manual resizing */
+  width: 100%;          /* Or set a specific width, e.g., 300px */
+  min-width: 0;         /* Ensures it doesn't overflow flex/grid */
+  height: 120px;        /* Or any fixed height you prefer */
+  max-height: 120px;    /* Prevents vertical expansion */
+  box-sizing: border-box;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

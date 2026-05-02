@@ -1,0 +1,43 @@
+<section id="contact" class="contact-section">
+  <div class="container grid">
+    
+    <!-- LEFT SIDE -->
+    <div class="contact-info" data-aos="fade-right">
+      <h2 class="gradient-text">Let's Connect</h2>
+      <p>Currently open to new opportunities and interesting digital collaborations.</p>
+      
+      <div class="social-links">
+        <a href="#" class="glass-card social-icon"><i-lucide name="github"></i-lucide></a>
+        <a href="#" class="glass-card social-icon"><i-lucide name="linkedin"></i-lucide></a>
+        <a href="#" class="glass-card social-icon"><i-lucide name="twitter"></i-lucide></a>
+        <a href="#" class="glass-card social-icon"><i-lucide name="mail"></i-lucide></a>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <form #form="ngForm" (ngSubmit)="sendEmail(form)" class="glass-card contact-form" data-aos="fade-left">
+      
+      <div class="input-group">
+        <input type="text" name="name" ngModel placeholder="Your Name" required>
+      </div>
+
+      <div class="input-group">
+        <input type="email" name="email" ngModel placeholder="Your Email" required>
+      </div>
+
+      <div class="input-group">
+        <textarea name="message" ngModel placeholder="Your Message" rows="5" required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn glass-card" [disabled]="loading">
+        <span *ngIf="!loading">Send Message</span>
+        <span *ngIf="loading">Sending...</span>
+        <i-lucide name="send" class="btn-icon"></i-lucide>
+      </button>
+
+      <p class="success-msg" *ngIf="success">✅ Message sent successfully!</p>
+
+    </form>
+
+  </div>
+</section>

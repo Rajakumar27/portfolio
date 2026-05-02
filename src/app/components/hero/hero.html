@@ -1,0 +1,55 @@
+<!-- <app-three-scene></app-three-scene> -->
+<section class="hero-container">
+    <ngx-particles id="tsparticles" [options]="particlesOptions" [particlesInit]="particlesInit"></ngx-particles>
+
+
+    <div class="hero-layout">
+
+        <div class="hero-left">
+            <div class="hero-content">
+                <h1 #heroTitle class="gradient-text">Hi, I'm</h1>
+                <h1 #heroTitle1 class="gradient-text">Raja Kumar</h1>
+                <p #heroSubtitle>Mobile Application Developer with close to 2 years of experience developing cross-platform apps using Ionic, Angular, and JavaScript, with additional experience in Kotlin for Android. Passionate about building smooth, scalable, and user-focused mobile applications while following modern development practices and clean code principles.</p>
+                <div #heroActions class="cta-group" style="display: none;">
+                    <button class="glass-card">View Projects</button>
+                    <button class="outline-btn">Contact Me</button>
+                </div>
+               <div>
+                 <div class="typing-effect" #typingEffect></div>
+               </div>
+            </div>
+        </div>
+
+        <div class="hero-right" #heroRight>
+            <div class="photo-system">
+
+                <div class="glow-sphere"></div>
+
+                <div class="orbit-path path-1">
+                    <div class="orbiting-icon icon-1"><i-lucide name="code"></i-lucide></div>
+                    <div class="orbiting-icon icon-2"><i-lucide name="figma"></i-lucide></div>
+                    <div class="orbiting-icon icon-5"><i-lucide name="layers"></i-lucide></div>
+                    <div class="orbiting-icon icon-6"><i-lucide name="globe"></i-lucide></div>
+                </div>
+
+                <div class="orbit-path path-2">
+                    <div class="orbiting-icon icon-3"><i-lucide name="cpu"></i-lucide></div>
+                    <div class="orbiting-icon icon-4"><i-lucide name="terminal"></i-lucide></div>
+                    <div class="orbiting-icon icon-7"><i-lucide name="database"></i-lucide></div>
+                    <div class="orbiting-icon icon-8"><i-lucide name="github"></i-lucide></div>
+                </div>
+
+                <div class="profile-container">
+                    <div class="glass-morph-ring"></div>
+                    <div class="image-mask">
+                        <img src="assets/icons/Profile_photo.jpg" alt="Raja">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="scroll-indicator">
+        <i-lucide name="chevron-down" class="animate-bounce"></i-lucide>
+    </div>
+</section>

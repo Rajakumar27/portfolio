@@ -1,0 +1,48 @@
+<nav class="nav-container" #navbar>
+  <div class="nav-content glass-card">
+    <div class="logo">
+      <span class="gradient-text">Raja.Dev</span>
+    </div>
+
+    <!-- Desktop Nav Links -->
+    <ul class="nav-links desktop-only">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#experience">Journey</a></li>
+    </ul>
+
+    <div class="nav-actions desktop-only">
+      <a href="#contact" class="contact-btn">
+        <span>Connect</span>
+        <i-lucide name="arrow-up-right"></i-lucide>
+      </a>
+    </div>
+
+    <!-- Hamburger for mobile only -->
+    <button class="hamburger mobile-only" type="button" (click)="toggleMobileMenu()" aria-label="Open navigation">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-nav-overlay" *ngIf="mobileMenuOpen">
+    <div class="mobile-nav-content glass-card">
+      <button class="close-btn" (click)="toggleMobileMenu()" aria-label="Close navigation">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <ul class="mobile-nav-links">
+        <li><a href="#about" (click)="toggleMobileMenu()">About</a></li>
+        <li><a href="#skills" (click)="toggleMobileMenu()">Skills</a></li>
+        <li><a href="#projects" (click)="toggleMobileMenu()">Work</a></li>
+        <li><a href="#experience" (click)="toggleMobileMenu()">Journey</a></li>
+      </ul>
+      <div class="nav-actions" style="width:100%;margin-top:18px;display:flex;justify-content:center;">
+        <a href="#contact" class="contact-btn" (click)="toggleMobileMenu()">
+          <span>Connect</span>
+          <i-lucide name="arrow-up-right"></i-lucide>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>

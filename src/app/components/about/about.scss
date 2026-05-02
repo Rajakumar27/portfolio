@@ -1,0 +1,113 @@
+.about-section {
+  padding: 120px 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.05), transparent 40%);
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr; // Bio is slightly wider than the card
+  gap: 60px;
+  align-items: center;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+/* --- Bio Side --- */
+.bio-content {
+  h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 30px;
+    font-weight: 800;
+  }
+
+  .about-text {
+    padding: 40px;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    
+    strong {
+      color: var(--accent-blue);
+      font-weight: 600;
+    }
+  }
+}
+
+/* --- Identity Card Side --- */
+.identity-card {
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+
+  // Add a subtle "circuit" pattern background or glow
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.03) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: white;
+
+    .icon-blue {
+      color: var(--accent-blue);
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      strong {
+        color: white;
+        display: inline-block;
+        width: 100px; // Aligns the text nicely
+      }
+    }
+  }
+}
+
+/* --- Hover Interaction --- */
+.identity-card.glass-card {
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s;
+  
+  &:hover {
+    transform: translateY(-10px) rotateX(5deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(56, 189, 248, 0.1);
+  }
+}

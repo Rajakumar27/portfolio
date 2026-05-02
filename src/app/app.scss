@@ -1,0 +1,21 @@
+
+.cursor-follower {
+	position: fixed;
+	pointer-events: none;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background: rgba(16, 185, 129, 0.2);
+	border: 2px solid #10b981;
+	z-index: 9999;
+	transition: width 0.2s, height 0.2s;
+}
+
+@media (max-width: 768px) {
+	.cursor-follower {
+		width: 16px;
+		height: 16px;
+		border-width: 1px;
+		background: rgba(16, 185, 129, 0.1);
+	}
+}

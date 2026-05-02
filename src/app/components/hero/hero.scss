@@ -1,0 +1,266 @@
+/* --- Main Container --- */
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center; /* Vertically centers the whole layout */
+  background: var(--bg-dark);
+}
+
+/* --- Background Layers --- */
+#tsparticles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.three-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* --- Layout Grid --- */
+.hero-layout {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start; /* This pushes left to left and right to right */
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 60px;
+    padding-top: 80px;
+  }
+}
+
+/* --- Left Side: Text --- */
+.hero-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Forces left alignment */
+
+  .hero-content {
+    max-width: 600px;
+    text-align: left; /* Overrides previous center align */
+
+    h1 {
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    p {
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      margin: 20px 0 40px 0;
+      font-weight: 300;
+    }
+  }
+
+  .cta-group {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start; /* Buttons start on the left */
+
+    button {
+      padding: 16px 32px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 24px;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .glass-card {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-blue);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      &:hover {
+        background: var(--accent-blue);
+        color: var(--bg-dark);
+        box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
+      }
+    }
+
+    .outline-btn {
+      background: transparent;
+      border: 1px solid var(--glass-border);
+      color: white;
+      &:hover {
+        border-color: white;
+        background: rgba(255, 255, 255, 0.05);
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    align-items: center;
+    .hero-content { text-align: center; }
+    .cta-group { justify-content: center; }
+  }
+}
+
+/* --- Right Side: Photo System --- */
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end; /* Pushes the system to the far right */
+  align-items: center;
+
+  @media (max-width: 992px) {
+    justify-content: center;
+  }
+}
+
+.photo-system {
+  position: relative;
+  width: 450px;
+  height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  @media (max-width: 500px) {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+.profile-container {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  z-index: 10;
+  
+  .image-mask {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 50px rgba(56, 189, 248, 0.2);
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .glass-morph-ring {
+    position: absolute;
+    top: -15px; left: -15px; right: -15px; bottom: -15px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+    z-index: -1;
+    animation: floating 6s ease-in-out infinite;
+  }
+}
+
+/* --- Orbiting Animations --- */
+.orbit-path {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  animation: rotate 30s linear infinite;
+
+  &.path-1 { width: 360px; height: 360px; animation-duration: 25s; }
+  &.path-2 { width: 460px; height: 460px; animation-duration: 45s; animation-direction: reverse; }
+
+  @media (max-width: 500px) {
+    &.path-1 { width: 280px; height: 280px; }
+    &.path-2 { width: 340px; height: 340px; }
+  }
+}
+
+.orbiting-icon {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-blue);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+
+  i-lucide { animation: counter-rotate 20s linear infinite; }
+}
+
+/* Individual Icon Placement */
+.icon-1 { top: 0; left: 50%; transform: translate(-50%, -50%); }
+.icon-2 { bottom: 0; left: 50%; transform: translate(-50%, 50%); }
+.icon-3 { left: 0; top: 50%; transform: translate(-50%, -50%); }
+.icon-4 { right: 0; top: 50%; transform: translate(50%, -50%); }
+/* Diagonals for Path 1 (Icons 5 & 6) */
+.icon-5 { top: 15%; left: 85%; transform: translate(-50%, -50%); }
+.icon-6 { bottom: 15%; left: 15%; transform: translate(-50%, -50%); }
+
+/* Diagonals for Path 2 (Icons 7 & 8) */
+.icon-7 { top: 15%; left: 15%; transform: translate(-50%, -50%); }
+.icon-8 { bottom: 15%; left: 85%; transform: translate(-50%, -50%); }
+.icon-1 i-lucide { color: #38bdf8; }    // Blue (Code)
+.icon-2 i-lucide { color: #ff7262; }    // Figma Orange
+.icon-3 i-lucide { color: #facc15; }    // Yellow (CPU)
+.icon-4 i-lucide { color: #10b981; }    // Green (Terminal)
+.icon-5 i-lucide { color: #a21caf; }    // Purple (Layers)
+.icon-6 i-lucide { color: #0ea5e9; }    // Cyan (Globe)
+.icon-7 i-lucide { color: #f472b6; }    // Pink (Database)
+.icon-8 i-lucide { color: #ffffff; }  
+/* --- Global Utilities --- */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+.typing-effect {
+  min-height: 2.8em; // Increased size for taller sentences
+  font-size: 1.5rem; // Larger text
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+ background: linear-gradient(90deg, #00f5ff, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  padding: 8px 0;
+}
+.typing-effect::after {
+  content: "|";
+  animation: blink 1s infinite;
+}
+
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes counter-rotate { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+@keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
+.animate-bounce { animation: bounce 2s infinite; }
